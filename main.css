@@ -1,0 +1,9 @@
+a{
+    color: black;
+}
+
+.mb-3{
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+}
