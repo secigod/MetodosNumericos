@@ -1,9 +1,106 @@
-a{
-    color: black;
+@media only screen and (min-width: 600px){
+    a {
+        color: black;
+      }
+    body{
+        background-color: rgb(8, 36, 90);
+        width: 100vw;
+        color: white;
+    }
+      .containerNav{
+        display: none;
+      }
+      
+      .mb-3 {
+        display: flex;
+        justify-content: center;
+        margin: auto 0;
+      }
+      
+      .contaniner-menu-icon {
+        display: none;
+      }
+      
+      .menu{
+          display: none;
+      }
+      .carrusel{
+        display: grid;
+        margin: 0 auto;
+        width: 50vw;
+        height: 50vh;
+        color: black;
+      }
+      .solution{
+        display: none;
+        margin: 0 auto;
+        background-color: #d59f0f;
+        height: 20vh;
+        width: 80vw;
+        color: rgb(8, 36, 90);
+      }
 }
 
-.mb-3{
-    display: flex;
-    justify-content: center;
-    margin: auto 0;
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: rgb(8, 36, 90);
+    width: 100vw;
+    color: white;
+  }
+
+  .w3-row {
+    display: none;
+  }
+
+  .manu-icon {
+    width: 35px;
+    height: 5px;
+    background-color: #d59f0f;
+    color: black;
+    margin: 20% 0;
+  }
+
+  .contaniner-menu-icon {
+    display: block;
+    margin-right: 10%;
+    margin-top: 10%;
+    float: right;
+  }
+
+  .menu{
+    display: none;
+    z-index: 10000;
+    color: black;
+  }
+
+  .backgroun-menu{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, .02);
+    
+  }
+
+  .imgPuma{
+    display: grid;
+    margin: 0 auto;
+    margin-top: 60%;
+    border: 15px solid #d59f0f;
+    justify-self: center;
+  }
+  .carrusel{
+    display: grid;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+  }
+
+  .solution{
+    display: grid;
+    margin: 0 auto;
+    background-color: #d59f0f;
+    height: 20vh;
+    width: 80vw;
+    color: rgb(8, 36, 90);
+  }
 }
