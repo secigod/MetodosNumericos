@@ -17,7 +17,7 @@
     <div class="containerNav container">
       <div class="row">
         <div class="col">
-          <img style="width: 20vh; width: 20vw; margin-top: 10%;" src="Assets/unamLogo.png" alt="">
+          <img style="width: 20vh; width: 20vw; margin-top: 10%;" src="/Assets/unamLogo.png" alt="">
         </div>
       
       <div class="col">
@@ -149,40 +149,198 @@
       <!-- //APUNTES -->
       <div id="APUNTES" class="w3-container city" style="display: none">
         <h2>APUNTES</h2>
-        <p>test</p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi hic
-          maiores et at dolorum sed, perferendis alias, explicabo molestiae
-          voluptas voluptates. Possimus sit ipsa rem dignissimos sapiente
-          ratione, voluptates eaque!
+          Hola compañero(a), en este sitio podras descargar material didactico y apuntes relacionado a la materia de metodos numericos con la finalidad de reforzar tu conocimiento
         </p>
+        <h1>Primer Parcial</h1>
         <table class="table table-warning table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Tema</th>
               <th scope="col">Link</th>
+              <th scope="col">Prueba</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Metodo 1</td>
-              <td><a href="javascript:void(0)">Descargar</a></td>
+              <td>Aproximacion numerica y errores</td>
+              <td><a   Target="_blank"Target="_blank" href="Assets/1_aproximacion_numerica_y_errores.pdf">Descargar</a></td>
+              <td><button onclick="openModal(event);"  id="AproxNum" type="button" class="btn btn-primary">Test</button></td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Metodo 1</td>
-              <td><a href="javascript:void(0)">Descargar</a></td>
+              <td>punto fijo</td>
+              <td><a   target="_blank" href="Assets/punto fijo teoria.pdf">Descargar</a></td>
+              <td><button onclick="openModal(event);"  id="PuntoFijo" type="button" class="btn btn-primary">Test</button></td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Metodo 1</td>
-              <td><a href="javascript:void(0)">Descargar</a></td>
+              <td>Polinomios de Taylor</td>
+              <td><a   Target="_blank"Target="_blank" href="Assets/Polinomios de Taylor teoria.pdf">Descargar</a></td>
+              <td><button onclick="openModal(event);"  id="polinomios" type="button" class="btn btn-primary">Test</button></td>
             </tr>
           </tbody>
         </table>
+
+        <h1>Segundo Parcial</h1>
+      <table class="table table-warning table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tema</th>
+            <th scope="col">Link</th>
+            <th scope="col">Prueba</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Descomposicion LU</td>
+            <td><a   Target="_blank"Target="_blank" href="Assets/Descomposicion LU.pdf">Descargar</a></td>
+            <td><button onclick="openModal(event);"  id="descompocición" type="button" class="btn btn-primary">Test</button></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Método de bisección</td>
+            <td><a   Target="_blank"Target="_blank" href="Assets/Método de bisección.pdf">Descargar</a></td>
+            <td><button onclick="openModal(event);"  id="bisección" type="button" class="btn btn-primary">Test</button></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Metodo de Newton-Raphson</td>
+            <td><a   Target="_blank"Target="_blank" href="Assets/MetododeNewtonRaphson.pdf">Descargar</a></td>
+            <td><button onclick="openModal(event);"  id="newtonraphson" type="button" class="btn btn-primary">Test</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="color: black;">
+          <span class="close">&times;</span>
+          <div class="firstQuestion">
+            <h2>Primera pregunta</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+          </div>
+        </br>
+          <div class="sacondQuestion">
+            <h2>Segunda pregunta</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+          </div>
+        </br>
+          <div class="thirdQuestion">
+            <h2>Tercera pregunta</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+          </div>
+        </br>
+          <div class="fourthQuestion">
+            <h2>Cuarta pregunta</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Default checkbox
+              </label>
+            </div>
+          </div>
+        </br>
+        <button class="btn btn-success">Enviar</button>
+        </div>
+      
       </div>
+    </div>
+      </div>
+      
+      
 
       <!-- //SOLUCIONARIO -->
       <div id="SOLUCIONARIO" class="w3-container city" style="display: none">
