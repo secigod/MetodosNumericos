@@ -177,4 +177,8 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .container-table{
+    min-width: 30%;
+    overflow: auto;
+  }
 }
