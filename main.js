@@ -309,7 +309,7 @@ function showResultPuntoFijo() {
 
 function puntoFijo(g, x0, tol, maxIter) {
   dataTable = [];
-  document.getElementById("solution").style.innerHTML = "";
+  //document.getElementById("solution").outerHTML = `<div></div>`;
   let iter = 0;
   let error = parseFloat(tol);
   let x = parseFloat(x0);
@@ -327,9 +327,7 @@ function puntoFijo(g, x0, tol, maxIter) {
       break;
     }
     if (Math.abs(x_next - x) < parseFloat(tol)) {
-      document.getElementById("solution").outerHTML += `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody>`
-
-      blocktoDisplay.innerHTML += `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`
+      document.getElementById("solution").outerHTML += `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`;
 
       dataTable.forEach((element) => {
         document.getElementById("tableData").innerHTML += `<tr><th scope="row">${element.i}</th><td>${element.Xo}</td><td>${element.x1}</td><td>${element.err}</td></tr>`;
