@@ -133,8 +133,12 @@ function init(incio) {
 }
 
 function openCity(evt, cityName) {
-  document.getElementById("solution").style.display = "none";
+  let tableData = document.getElementById("solution");
 
+  if (tableData == null) {
+    document.getElementById("datatTableHtml").outerHTML = `<div id="solution" class="solution" style="display: none;"></div>`;
+  }
+     
   var i, x, tablinks;
   x = document.getElementsByClassName("city");
   for (i = 0; i < x.length; i++) {
@@ -149,7 +153,11 @@ function openCity(evt, cityName) {
 }
 
 function openMenu() {
-  document.getElementById("solution").style.display = "none";
+  let tableData = document.getElementById("solution");
+
+  if (tableData == null) {
+    document.getElementById("datatTableHtml").outerHTML = `<div id="solution" class="solution" style="display: none;"></div>`;
+  }
 
   if (countMenu === 0) {
     countMenu = 1;
@@ -164,6 +172,11 @@ function openMenu() {
 
 function openCityMenu(evt, cityName) {
   document.getElementById("solution").style.display = "none";
+  let tableData = document.getElementById("solution");
+
+  if (tableData == null) {
+    document.getElementById("datatTableHtml").outerHTML = `<div id="solution" class="solution" style="display: none;"></div>`;
+  }
 
   var i, x, tablinks;
   x = document.getElementsByClassName("city");
@@ -287,9 +300,22 @@ function sendAnswer(event) {
   console.log('correctAnswer -->', correctAnswer, ' nad  isSuccesssfully -->', isSuccesssfully);
 }
 
+function clearTable() {
+  let tableData = document.getElementById("solution");
+  
+  console.log('tableData -->',tableData);
+  
+  if (tableData == null) {
+    document.getElementById("datatTableHtml").outerHTML = `<div id="solution" class="solution" style="display: none;"></div>`;
+  }
 
+  console.log('entro equisde');
+  
+}
 //para metodo de punto fijo
 function showResultPuntoFijo() {
+  clearTable();
+
   let funct = document.getElementById("formulaPuntoFIjo").value;
   let xo = document.getElementById("xoPuntoFijo").value;
   let tol = document.getElementById("tolPuntoFijo").value;
@@ -309,25 +335,26 @@ function showResultPuntoFijo() {
 
 function puntoFijo(g, x0, tol, maxIter) {
   dataTable = [];
-  //document.getElementById("solution").outerHTML = `<div></div>`;
+  document.getElementById("solution").style.innerHTML = "";
   let iter = 0;
   let error = parseFloat(tol);
   let x = parseFloat(x0);
+  let blocktoDisplay = document.getElementById("solution");
 
   while (iter < maxIter) {
 
     let x_next = newResult(g, x);  // Calcula la siguiente aproximación usando g(x) 
+    if (x_next == 'error') {
+      alert("Función no valida, favor de verificar su escritura");
+      break;
+      }
     error = Math.abs((x_next - x) / ((x_next > x) ? x_next : x) * 100);  // Calcula el error
     // Incrementa el contador de iteraciones
     dataTable.push({ i: iter, Xo: x, x1: x_next, err: error });
-    if (x_next == 'error') {
-      document.getElementById("solution").style.display = "grid";
-      document.getElementById("solution").innerHTML = "<center><h1>la funcion ingresada no es correcta</h1><center/>"
-      console.log(dataTable);
-      break;
-    }
     if (Math.abs(x_next - x) < parseFloat(tol)) {
-      document.getElementById("solution").outerHTML += `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`;
+      document.getElementById("solution").outerHTML = `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody>`
+
+      document.getElementById("solution").outerHTML = `<table  id="datatTableHtml" class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`
 
       dataTable.forEach((element) => {
         document.getElementById("tableData").innerHTML += `<tr><th scope="row">${element.i}</th><td>${element.Xo}</td><td>${element.x1}</td><td>${element.err}</td></tr>`;
@@ -340,10 +367,8 @@ function puntoFijo(g, x0, tol, maxIter) {
   }
 
   // Devuelve el resultado aproximado
-  let blocktoDisplay = document.getElementById("solution");
-  blocktoDisplay.style.display = "grid";
-  blocktoDisplay.innerHTML = "<center><h1>'El método no convergió en el número máximo de iteraciones'</h1><center/></br>";
-  blocktoDisplay.innerHTML += `<table class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`
+  alert("El método no convergió en el número máximo de iteraciones");
+  document.getElementById("solution").outerHTML = `<table id="datatTableHtml"  class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xo</th><th scope="col">Xo+1</th><th scope="col">Error%</th></tr></thead><tbody id="tableData"></tbody></table>`
 
   dataTable.forEach((element) => {
     document.getElementById("tableData").innerHTML += `<tr><th scope="row">${element.i}</th><td>${element.Xo}</td><td>${element.x1}</td><td>${element.err}</td></tr>`;
@@ -366,3 +391,144 @@ function newResult(g, x) {
   }
   return simplified;
 }
+
+function showBisección() {
+  clearTable();
+
+  let funct = document.getElementById("formulaBiseccion").value;
+  let xo = document.getElementById("xoBiseccion").value;
+  let tol = document.getElementById("xiBiseccion").value;
+  let masit = document.getElementById("maxItBiseccion").value;
+
+  if (funct == '' || funct == null || funct == undefined ||
+    xo == '' || xo == null || xo == undefined ||
+    tol == '' || tol == null || tol == undefined ||
+    masit == '' || masit == null || masit == undefined
+  ) {
+    alert("Favor de completar todos los campos");
+  } else {
+    let resultado = biseccion(String(funct), xo, tol, masit);
+    console.log('resultado -->', resultado);
+  }
+}
+
+function biseccion(func, xo, tol, masit) {
+  dataTable = [];
+  let iter = 0;
+  let error = parseFloat(tol);
+  let xb = parseFloat(tol);
+  let xa = parseFloat(xo);
+  let xr = (xa + xb) / 2;
+  let firstResult = newResult(func, xa);
+  let secondResult = newResult(func, xr);
+  let change = firstResult * secondResult;
+
+  while (iter < masit) {
+    if (firstResult == 'error' || secondResult == 'error') {
+      alert("Función no valida, favor de verificar su escritura");
+      break;
+    }
+    if (iter == 0) {
+      dataTable.push({ i: (iter + 1), Xa: xa, Xr: xr, Xb: xb, diff: change });
+    } else {
+      if (change < 0) {
+        xb = xr;
+        xr = (xa + xb) / 2;
+
+        secondResult = newResult(func, xr);
+      } else {
+
+        xa = xr;
+        xr = (xa + xb) / 2;
+
+        firstResult = secondResult;
+        secondResult = newResult(func, xr);
+      }
+
+      change = firstResult * secondResult;
+
+      dataTable.push({ i: (iter + 1), Xa: xa, Xr: xr, Xb: xb, diff: change });
+    }
+
+    // Incrementa el contador de iteraciones
+    iter++;
+
+    if (iter >= parseFloat(masit)) {
+      let finalXr;
+      document.getElementById("solution").outerHTML = `<table id="datatTableHtml" class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xa</th><th scope="col">Xr</th><th scope="col">Xb</th><th scope="col">𝑓(𝑥𝑎 ) ∗ 𝑓(𝑥𝑟)</th></tr></thead><tbody id="tableData"></tbody></table>`
+      dataTable.forEach((element) => {
+        document.getElementById("tableData").innerHTML += `<tr><th scope="row">${element.i}</th><td>${element.Xa}</td><td>${element.Xr}</td><td>${element.Xb}</td><td>${element.diff}</td></tr>`;
+        finalXr = element.Xr;
+      });
+      console.log(dataTable);
+      return finalXr;
+    }
+
+  }
+}
+
+function showNewton() {
+  clearTable();
+  let funct = document.getElementById("formulaNewton").value;
+  let xo = document.getElementById("valorInicialNewton").value;
+  let masit = document.getElementById("iteracionesNewton").value;
+
+  if (funct == '' || funct == null || funct == undefined ||
+    xo == '' || xo == null || xo == undefined ||
+    masit == '' || masit == null || masit == undefined
+  ) {
+    alert("Favor de completar todos los campos");
+  } else {
+    let resultado = newton(String(funct), xo, masit);
+    console.log('resultado -->', resultado);
+  }
+
+}
+
+function newton(func, xo, masit) {
+  dataTable = [];
+  document.getElementById("solution").style.innerHTML = "";
+  let iter = 0;
+  let xa = parseFloat(xo);
+    
+  //funcion derivada
+  let derivateFunc = math.derivative(func,'x').toString();
+
+  let originalResult;
+  let derivateFuncResult;
+
+  let newXr;
+
+  while (iter < masit) {
+
+    originalResult = newResult(func,xa);
+    derivateFuncResult = newResult(derivateFunc,xa);
+
+    if (originalResult == 'error' || derivateFuncResult == 'error') {
+      alert("Función no valida, favor de verificar su escritura");
+      break;
+    }
+
+    newXr = xa - ((originalResult)/(derivateFuncResult));
+
+    dataTable.push({ i: (iter + 1), Xn:xa, Xr: newXr });
+
+    xa = newXr;
+    // Incrementa el contador de iteraciones
+    iter++;
+
+    if (iter >= parseFloat(masit)) {
+      let finalXr;
+      document.getElementById("solution").outerHTML = `<table id="datatTableHtml" class="table table-bordered table-dark"><thead><tr><th scope="col">#</th><th scope="col">Xa</th><th scope="col">Xr</th></tr></thead><tbody id="tableData"></tbody></table>`
+      dataTable.forEach((element) => {
+        document.getElementById("tableData").innerHTML += `<tr><th scope="row">${element.i}</th><td>${element.Xn}</td><td>${element.Xr}</td></tr>`;
+        finalXr = element.Xr;
+      });
+      console.log(dataTable);
+      return finalXr;
+    }
+
+  }
+}
+
+
