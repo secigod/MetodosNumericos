@@ -337,7 +337,10 @@ function puntoFijo(g, x0, tol, maxIter) {
   dataTable = [];
   document.getElementById("solution").style.innerHTML = "";
   let iter = 0;
-  let error = parseFloat(tol);
+  let error = parseFloat(tol)/100;
+  if (error>1) {
+    alert("El error debe ser menor al 100%");
+  }
   let x = parseFloat(x0);
   let blocktoDisplay = document.getElementById("solution");
 
